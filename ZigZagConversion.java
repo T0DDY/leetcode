@@ -16,9 +16,11 @@ public class ZigZagConversion {
 			return s;
 		}
 
+		// most important : to find the cycle.
 		int cycle = 2 * numRows - 2;
 		List<StringBuilder> list = new ArrayList<StringBuilder>();
 		for (int i = 0; i < numRows; i++) {
+			// get many list to contain the char.
 			StringBuilder sb = new StringBuilder();
 			list.add(sb);
 		}

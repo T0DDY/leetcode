@@ -44,6 +44,11 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		return maxLength;
 	}
 
+	/**
+	 * The longest substring would appear among <b>Each</b> character's next.
+	 * @param s
+	 * @return
+	 */
 	public int lengthOfLongestSubstring2(String s) {
 
 		Map<Character, Integer> maxLengthMap = new HashMap<Character, Integer>();
@@ -52,26 +57,34 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
 		char[] array = s.toCharArray();
 
+		// over read the string.
 		for (int i = 0; i < array.length; i++) {
+			// if a character appear, but not exist in maxLength ,
+			// it should be appear the second time.
 			if (occuredChar.contains(array[i])) {
 				if (maxLengthMap.get(array[i]) == null) {
 					maxLengthMap.put(array[i], i);
 					lastCharPosition.put(array[i], i);
 				} else {
+					//  it should appear more than 2 times,
+					//	so, compare the existing two length
 					maxLengthMap
 							.put(array[i],
 									maxLengthMap.get(array[i]) > i
 											- lastCharPosition.get(array[i]) ? maxLengthMap
 											.get(array[i]) : i
 											- lastCharPosition.get(array[i]));
+					// record the last position
 					lastCharPosition.put(array[i], i);
 				}
 			} else {
+				// record
 				maxLengthMap.put(array[i], i);
 				lastCharPosition.put(array[i], i);
 			}
 		}
 
+		// should return the max length of maxLengthMap.
 		return 0;
 	}
 
