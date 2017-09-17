@@ -12,10 +12,10 @@ public class CountAndSay {
 
 		if (n == 1) {
 			return "1";
-		}else if(n==2){
+		} else if (n == 2) {
 			return "11";
 		}
-		
+
 		String previous = countAndSay(n - 1);
 
 		return count(previous);
@@ -36,16 +36,16 @@ public class CountAndSay {
 			}
 			i++;
 		}
-		return result+count+array[i];
+		return result + count + array[i];
 	}
 
 	@Test
 	public void testCountAndSay() {
 		Assert.assertEquals("312211", countAndSay(6));
 	}
-	
-//	@Test
-	public void testPreviousCount(){
+
+	// @Test
+	public void testPreviousCount() {
 		Assert.assertEquals("21", count("11"));
 	}
 }
